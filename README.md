@@ -9,9 +9,18 @@ pip3 install .
 ```
 ### HASS config
 ```yaml
+# Setup as device
 device_tracker:
   - platform: mqtt
     devices:
-      nodemcu: 'location/client_id'
-      esp8266: 'location/eps_client_id'
+      nodemcu: "location/client_id"
+      esp8266: "location/eps_client_id"
+ 
+ # Setup as binary sensor
+ binary_sensor:
+  - platform: mqtt
+    name: Nodemcu
+    state_topic: "location/client_id"
+    payload_on: "home"
+    payload_off: "not_home"
 ```
